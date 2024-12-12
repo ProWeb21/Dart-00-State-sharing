@@ -30,4 +30,10 @@ class MyApp extends StatelessWidget {
 class AppState extends ChangeNotifier
 {
   WordPair currentWordPair = WordPair('Word', 'pair');
+
+  void genNewWordPair()
+  {
+    currentWordPair = WordPair.random();
+    notifyListeners();
+  }
 }
