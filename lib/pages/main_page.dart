@@ -30,7 +30,14 @@ class MainPage extends StatelessWidget
                 )
               )  
             ),
-            ElevatedButton(onPressed: (){appState.genNewWordPair();}, child: Text("Press me")),
+            Row(              
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(onPressed: (){}, icon: Icon(Icons.star), style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(appTheme.colorScheme.tertiaryContainer))),
+                SizedBox(width: 14),
+                ElevatedButton(onPressed: (){appState.genNewWordPair();}, child: Text("Press me"))
+              ]
+            )
           ]
         ),
       )
