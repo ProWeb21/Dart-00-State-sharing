@@ -30,10 +30,45 @@ class MyApp extends StatelessWidget {
 class AppState extends ChangeNotifier
 {
   WordPair currentWordPair = WordPair('Word', 'pair');
+  List<WordPair> _favorites = <WordPair>[];
+
+  List<WordPair> get favorites {
+    return _favorites.toList(growable: false);
+  }
 
   void genNewWordPair()
   {
     currentWordPair = WordPair.random();
     notifyListeners();
   }
+
+  void toggleFavorite(WordPair favorite)
+  {
+    if (!_favorites.contains(favorite))
+    {
+      addFavorite(favorite);
+    } else {
+      removeFavorite(favorite);
+    }
+  }
+
+  @protected
+  void addFavorite(WordPair favorite)
+  {
+    if (!_favorites.contains(favorite))
+    {
+      _favorites.add(favorite);
+      notifyListeners();
+    }
+  }
+
+  @protected
+  void removeFavorite(WordPair favorite)
+  {
+    if (_favorites.contains(favorite))
+    {
+      _favorites.remove(favorite);
+      notifyListeners();
+    }
+  }  
 }
