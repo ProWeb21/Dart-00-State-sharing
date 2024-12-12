@@ -33,7 +33,7 @@ class MainPage extends StatelessWidget
             Row(              
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: (){}, icon: Icon(Icons.star), style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(appTheme.colorScheme.tertiaryContainer))),
+                IconButton(onPressed: (){appState.toggleFavorite(appState.currentWordPair);}, icon: Icon(Icons.star), style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(appTheme.colorScheme.tertiaryContainer))),
                 SizedBox(width: 14),
                 ElevatedButton(onPressed: (){appState.genNewWordPair();}, child: Text("Press me"))
               ]
