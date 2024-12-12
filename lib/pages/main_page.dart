@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget
 {
   @override
   Widget build(BuildContext context) {
     var appTheme = Theme.of(context);
+    var appState = context.watch<AppState>();
 
     return Scaffold(
       extendBody: true,      
@@ -22,7 +25,7 @@ class MainPage extends StatelessWidget
               color: appTheme.colorScheme.onSecondary,
               child: Padding(
                 padding: EdgeInsets.all(15), 
-                child: Text("Wordpair", 
+                child: Text(appState.currentWordPair.asString, 
                   style: (appTheme.textTheme.headlineMedium ?? appTheme.textTheme.displayMedium)!.copyWith(color: appTheme.colorScheme.error)
                 )
               )  

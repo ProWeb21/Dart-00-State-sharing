@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
       ColorScheme scheme = ColorScheme.fromSeed(seedColor: Colors.deepOrange);
       return ChangeNotifierProvider(
-        create: (context) => _AppState(),
+        create: (context) => AppState(),
         child: MaterialApp(
           title: 'My First Flutter App',
           theme: ThemeData(
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class _AppState extends ChangeNotifier
+class AppState extends ChangeNotifier
 {
   WordPair currentWordPair = WordPair('Word', 'pair');
 }
