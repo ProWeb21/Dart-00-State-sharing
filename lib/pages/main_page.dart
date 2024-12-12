@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget
                 )
               )  
             ),
-            ElevatedButton(onPressed: (){}, child: Text("Press me")),
+            ElevatedButton(onPressed: (){appState.genNewWordPair();}, child: Text("Press me")),
           ]
         ),
       )
