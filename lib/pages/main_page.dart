@@ -9,6 +9,10 @@ class MainPage extends StatelessWidget
     var appTheme = Theme.of(context);
     var appState = context.watch<AppState>();
 
+    var icon = appState.favorites.contains(appState.currentWordPair) 
+      ? Icons.star
+      : Icons.star_border_outlined;
+
     return Scaffold(
       extendBody: true,      
       body: Container(
@@ -33,7 +37,7 @@ class MainPage extends StatelessWidget
             Row(              
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: (){appState.toggleFavorite(appState.currentWordPair);}, icon: Icon(Icons.star), style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(appTheme.colorScheme.tertiaryContainer))),
+                IconButton(onPressed: (){appState.toggleFavorite(appState.currentWordPair);}, icon: Icon(icon), style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(appTheme.colorScheme.tertiaryContainer))),
                 SizedBox(width: 14),
                 ElevatedButton(onPressed: (){appState.genNewWordPair();}, child: Text("Press me"))
               ]
