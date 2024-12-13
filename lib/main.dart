@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/favorites_page.dart';
 import 'package:flutter_application_1/pages/main_page.dart';
 import 'package:provider/provider.dart';
 
@@ -7,8 +8,24 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppScreenState();    
+  }
+}
+
+class MyAppScreenState extends State
+{
+  late int selectedIndex;
+
+  @override
+  void initState() {
+    selectedIndex = 0;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +43,17 @@ class MyApp extends StatelessWidget {
               NavigationRail(
                 destinations: [
                   NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
-                  NavigationRailDestination(icon: Icon(Icons.star), label: Text('Favorites'), disabled: true),
+                  NavigationRailDestination(icon: Icon(Icons.star), label: Text('Favorites')),
                 ], 
-                selectedIndex: 0
+                selectedIndex: selectedIndex,
+                onDestinationSelected: (value) {
+                  setState(() {
+                    selectedIndex = value;
+                  });
+                },
               ),
               Expanded(
-                child: MainPage()
+                child: (selectedIndex == 1) ? FavoritesPage() : MainPage()
               )
             ],
           ),
