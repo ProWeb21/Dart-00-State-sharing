@@ -1,36 +1,25 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
+import 'package:provider/provider.dart';
 
 class FavoritesPage extends StatelessWidget
 {
-  final List<WordPair> _favorites = [];
-
-  @override
-  FavoritesPage({super.key})
-  {
-    _favorites.addAll(<WordPair>[
-      WordPair.random(), WordPair.random(),
-      WordPair.random(), WordPair.random(),
-      WordPair.random(), WordPair.random(),
-      WordPair.random(), WordPair.random(),
-      WordPair.random(), WordPair.random(),
-    ]);
-  }
 
   @override
   Widget build(BuildContext context) 
   {
     var appTheme = Theme.of(context);
-    
+    var appState = context.watch<AppState>();
+    var favorites = appState.favorites;
     return Material(child:
       ListView.builder(
         itemBuilder: (context, index) {
-          WordPair element = _favorites.elementAt(index);
           return ListTile(            
-            title: wordPairCard(appTheme, element)
+            title: wordPairCard(appTheme, favorites.elementAt(index))
           );
         }, 
-        itemCount: _favorites.length
+        itemCount: favorites.length
       )
     );
   }
