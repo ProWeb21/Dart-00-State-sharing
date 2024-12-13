@@ -16,7 +16,12 @@ class FavoritesPage extends StatelessWidget
       ListView.builder(
         itemBuilder: (context, index) {
           return ListTile(            
-            title: wordPairCard(appTheme, favorites.elementAt(index))
+            title: wordPairCard(appTheme, favorites.elementAt(index)),
+            trailing: IconButton(icon: Icon(Icons.delete),
+              onPressed:() {
+                appState.toggleFavorite(favorites.elementAt(index));
+              },
+            ),
           );
         }, 
         itemCount: favorites.length
