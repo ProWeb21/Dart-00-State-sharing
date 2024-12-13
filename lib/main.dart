@@ -21,7 +21,20 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
             colorScheme: scheme,
           ),
-          home: MainPage(),
+          home: Row(
+            children: [
+              NavigationRail(
+                destinations: [
+                  NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
+                  NavigationRailDestination(icon: Icon(Icons.star), label: Text('Favorites'), disabled: true),
+                ], 
+                selectedIndex: 0
+              ),
+              Expanded(
+                child: MainPage()
+              )
+            ],
+          ),
         )
       );
   }
